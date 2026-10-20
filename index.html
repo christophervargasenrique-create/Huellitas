@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- TÍTULO que se ve en la pestaña del navegador -->
+<title>Huellas al rescate</title>
+<!-- TIPOGRAFÍAS: Fraunces (títulos) y Nunito (textos). Se descargan de Google Fonts, necesitas internet -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- ESTILOS: colores y diseño están en css/estilos.css -->
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- ============ BARRA SUPERIOR: logo y menú (aparece en todas las secciones) ============ -->
+<header><div class="wrap">
+  <!-- LOGO: guarda tu logo en img/logo.png. Si no existe, solo se ve el nombre -->
+  <a class="logo" href="#inicio"><img src="img/logo.png" alt="" onerror="this.remove()">Huellas al rescate</a>
+  <!-- MENÚ: cada enlace lleva a una sección. El texto de href debe coincidir con el data-v de la sección -->
+  <nav aria-label="Principal">
+    <a href="#inicio">Inicio</a><a href="#tienda">Tienda solidaria</a><a href="#adopciones">Adopciones</a><a href="#ayuda">Cómo ayudar</a><a href="#nosotros">Nosotros</a>
+  </nav>
+</div></header>
+
+<main>
+
+<!-- ============ SECCIÓN 1: INICIO (portada) ============ -->
+<section class="view" data-v="inicio"><div class="wrap">
+  <div class="hero">
+    <!-- COLUMNA IZQUIERDA: mensaje principal y dos botones -->
+    <div>
+      <h1>Cada compra ayuda a un perro o gato sin hogar</h1>
+      <p>Vendemos postres, artículos y kits de cuidado. Una parte de lo que ganamos se destina a la alimentación, la salud y la adopción de animales abandonados.</p>
+      <div class="acciones"><a class="btn" href="#tienda">Ver la tienda</a><a class="btn alt" href="#adopciones">Conocer a los animales</a></div>
+    </div>
+    <!-- IMAGEN DE INICIO: la foto grande de la portada, en forma de arco. Guárdala en img/hero.jpg -->
+    <div class="ph"><img src="img/hero.jpg" alt="Perro rescatado" onerror="this.remove()"></div>
+  </div>
+  <!-- CÓMO FUNCIONA: 3 pasos numerados automáticamente -->
+  <div class="pasos">
+    <div><h3>Eliges un producto</h3><p>Postres y artículos hechos con una causa.</p></div>
+    <div><h3>Pides por WhatsApp</h3><p>Sin pasarela de pago: te atendemos directamente.</p></div>
+    <div><h3>Ayudas a un animal</h3><p>Parte de la ganancia va a comida, atención veterinaria y adopciones.</p></div>
+  </div>
+</div>
+<!-- TRANSPARENCIA: las barras las dibuja js/main.js con los porcentajes de DESTINO -->
+<div class="banda"><div class="wrap">
+  <h2>¿A dónde va tu dinero?</h2>
+  <p>Así repartimos lo que ganamos con cada venta.</p>
+  <div id="barras1"></div>
+</div></div>
+</section>
+
+<!-- ============ SECCIÓN 2: TIENDA SOLIDARIA ============ -->
+<section class="view" data-v="tienda"><div class="wrap">
+  <h2>Tienda solidaria</h2>
+  <p class="lead">Elige tu producto y pídelo por WhatsApp. Te confirmamos disponibilidad, entrega y forma de pago.</p>
+  <!-- FILTROS (Todo, Postres, Artículos, Kits): los crea js/main.js -->
+  <div class="chips" id="chips"></div>
+  <!-- PRODUCTOS: las tarjetas las crea js/main.js desde la lista PRODUCTOS.
+       La foto de cada postre o artículo va en img/productos/ (los nombres están en main.js) -->
+  <div class="grid" id="productos"></div>
+</div></section>
+
+<!-- ============ SECCIÓN 3: ADOPCIONES ============ -->
+<section class="view" data-v="adopciones"><div class="wrap">
+  <h2>Adopciones</h2>
+  <p class="lead">Ellos buscan un hogar. Conoce su historia y cuéntanos si quieres adoptar.</p>
+  <!-- ANIMALES: las tarjetas las crea js/main.js desde la lista ANIMALES.
+       La foto de cada animal va en img/animales/ (los nombres están en main.js) -->
+  <div class="grid" id="animales"></div>
+  <div class="dos">
+    <div>
+      <h2>Solicitar una adopción</h2>
+      <p class="lead">Llena el formulario y se abrirá WhatsApp con tu solicitud lista para enviar.</p>
+    </div>
+    <!-- FORMULARIO: no guarda datos en ningún servidor, al enviar abre WhatsApp con el mensaje escrito -->
+    <form id="formAdop">
+      <label>Tu nombre<input name="nombre" required></label>
+      <label>Tu celular<input name="cel" type="tel" required></label>
+      <label>Animal que te interesa<select name="animal" id="selAnimal"></select></label>
+      <label>¿Por qué quieres adoptar?<textarea name="motivo" rows="3" required></textarea></label>
+      <button class="btn wa" type="submit">Enviar solicitud por WhatsApp</button>
+    </form>
+  </div>
+</div></section>
+
+<!-- ============ SECCIÓN 4: CÓMO AYUDAR ============ -->
+<section class="view" data-v="ayuda"><div class="wrap">
+  <h2>Cómo ayudar</h2>
+  <p class="lead">No hace falta comprar para ayudar. Elige la forma que mejor te quede.</p>
+  <div class="dos" style="margin-top:0">
+    <!-- COLUMNA IZQUIERDA: formas de colaborar -->
+    <div>
+      <!-- DONAR: el número de Yape/Plin se escribe en js/main.js (variable YAPE) -->
+      <div class="caja"><h3>Donar</h3><p>Yape o Plin: <strong id="yape"></strong>. Envíanos tu comprobante por WhatsApp y lo registramos.</p></div>
+      <!-- VOLUNTARIADO: el enlace de WhatsApp lo pone js/main.js -->
+      <div class="caja"><h3>Ser voluntario</h3><p>Apoya en rescates, traslados, ferias o redes sociales.</p><div class="acciones"><a class="btn wa" id="waVol" target="_blank" rel="noopener">Quiero ser voluntario</a></div></div>
+      <!-- HOGAR TEMPORAL -->
+      <div class="caja"><h3>Dar hogar temporal</h3><p>Acoge a un animal unos días hasta que encuentre familia.</p><div class="acciones"><a class="btn wa" id="waHogar" target="_blank" rel="noopener">Ofrecer hogar temporal</a></div></div>
+      <!-- DIFUNDIR -->
+      <div class="caja"><h3>Difundir</h3><p>Comparte los perfiles de adopción. Un compartido puede ser un hogar.</p></div>
+    </div>
+    <!-- COLUMNA DERECHA: transparencia (mismas barras que en Inicio) -->
+    <div>
+      <h2>Transparencia</h2>
+      <p>De cada venta, esto es lo que hacemos con el dinero.</p>
+      <div id="barras2" style="color:var(--tinta)"></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ SECCIÓN 5: NOSOTROS ============ -->
+<section class="view" data-v="nosotros"><div class="wrap">
+  <h2>Nosotros</h2>
+  <p>En el Perú hay millones de animales en situación de calle, y los refugios y rescatistas casi nunca tienen dinero suficiente para alimentarlos y atenderlos. Huellas al rescate nació para cambiar eso: una tienda con causa donde comprar un postre también es ayudar a un animal.</p>
+  <!-- MISIÓN Y VISIÓN: revisa que coincidan con las de tu equipo -->
+  <div class="dos">
+    <div class="caja"><h3>Misión</h3><p>Reunir recursos para alimentar, curar y encontrar hogar a perros y gatos abandonados, involucrando a las personas de forma sencilla.</p></div>
+    <div class="caja"><h3>Visión</h3><p>Ser un emprendimiento solidario de referencia en Lima, que reduzca el abandono animal y promueva la tenencia responsable.</p></div>
+  </div>
+  <!-- ODS RELACIONADO -->
+  <div class="caja" style="margin-top:24px"><h3>ODS 11: Ciudades y comunidades sostenibles</h3><p>Contribuimos a ciudades más seguras e inclusivas, con comunidades conscientes del bienestar animal.</p></div>
+  <p class="meta" style="margin-top:24px">Proyecto emprendedor · Facultad de Humanidades · Lima, Perú, 2026</p>
+</div></section>
+</main>
+
+<!-- ============ PIE DE PÁGINA (aparece en todas las secciones) ============ -->
+<footer><div class="wrap">
+  <span>© 2026 Huellas al rescate</span>
+  <span>Contacto: <a id="waPie" target="_blank" rel="noopener">escríbenos por WhatsApp</a></span>
+</div></footer>
+
+<!-- PROGRAMA: toda la lógica (menú, tienda, WhatsApp) está en js/main.js -->
+<script src="js/main.js"></script>
+</body>
+</html>

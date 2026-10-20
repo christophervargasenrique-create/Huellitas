@@ -1,0 +1,85 @@
+﻿/* COLORES: cambia aquí los colores de toda la web */
+:root{--terra:#bd6b3a;--osc:#8f4a22;--sol:#fdd259;--cafe:#4a2410;--suave:#fdf0c8;--hueso:#fff9e8;--tinta:#2e1a0f}
+*{box-sizing:border-box;margin:0}
+/* TEXTO Y FONDO GENERAL */
+body{font:400 1rem/1.6 Nunito,system-ui,sans-serif;color:var(--tinta);background:var(--hueso)}
+/* TÍTULOS */
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1;color:var(--osc)}
+h1{font-size:clamp(2.2rem,6vw,3.9rem);font-weight:800}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:.6rem}
+h3{font-size:1.2rem}
+p{max-width:62ch}
+/* CONTENEDOR: centra el contenido y limita su ancho */
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+/* BARRA SUPERIOR con logo y menú */
+header{background:var(--terra);color:#fff;position:sticky;top:0;z-index:5}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:10px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.3rem Fraunces,Georgia,serif;color:#fff}
+.logo img{height:40px}
+/* MENÚ de navegación */
+nav{display:flex;gap:4px;overflow-x:auto;max-width:100%}
+nav a{padding:8px 14px;border-radius:99px;text-decoration:none;font-weight:700;white-space:nowrap;color:#fff}
+nav a:hover{background:rgba(255,255,255,.18)}
+nav a.on{background:var(--sol);color:var(--cafe)}
+/* BORDE VISIBLE al navegar con el teclado (accesibilidad) */
+:focus-visible{outline:3px solid var(--cafe);outline-offset:2px}
+header :focus-visible{outline-color:#fff}
+/* SECCIONES: solo se muestra la que elige el menú */
+.view{display:none;padding:48px 0 72px}.view.on{display:block}
+/* BOTONES */
+.btn{display:inline-block;border:0;cursor:pointer;font:700 1rem Nunito,sans-serif;padding:12px 22px;border-radius:99px;background:var(--osc);color:#fff;text-decoration:none;text-align:center}
+.btn:hover{background:var(--cafe)}
+.btn.alt{background:transparent;color:var(--osc);box-shadow:inset 0 0 0 2px var(--osc)}
+.btn.alt:hover{background:var(--suave)}
+.btn.wa{background:#1f7a4a}.btn.wa:hover{background:#17603a}
+.acciones{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+/* RECUADRO DE IMAGEN: si no hay foto, muestra una huellita */
+.ph{position:relative;background:var(--suave);display:grid;place-items:center;overflow:hidden}
+.ph::before{content:"\1F43E";font-size:2.5rem;opacity:.5}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* INICIO: texto a la izquierda e imagen en arco a la derecha */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.hero .ph{aspect-ratio:4/5;border-radius:999px 999px 20px 20px;border:6px solid var(--sol);box-shadow:14px 14px 0 var(--terra)}
+.hero p{margin-top:16px;font-size:1.15rem}
+/* INICIO: los 3 pasos de cómo funciona */
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:56px;counter-reset:p}
+.pasos div{border-top:4px solid var(--terra);padding-top:12px;counter-increment:p}
+.pasos h3::before{content:counter(p) ". "}
+/* FRANJA DE TRANSPARENCIA (a dónde va el dinero) */
+.banda{background:var(--osc);color:#fff;padding:40px 0;margin-top:56px}
+.banda h2,.banda h3{color:var(--sol)}
+.barra{margin-top:16px}
+.barra span{display:flex;justify-content:space-between;font-weight:700}
+.barra i{display:block;height:12px;border-radius:6px;background:rgba(255,255,255,.25);margin-top:4px}
+.barra i b{display:block;height:100%;border-radius:6px;background:var(--sol)}
+#barras2 .barra i{background:var(--suave)}
+#barras2 .barra i b{background:var(--terra)}
+.lead{margin-bottom:28px}
+/* FILTROS de la tienda */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.chip{border:2px solid var(--osc);background:transparent;color:var(--osc);border-radius:99px;padding:6px 16px;font:700 .95rem Nunito,sans-serif;cursor:pointer}
+.chip:hover{background:var(--suave)}
+.chip.on{background:var(--sol);color:var(--cafe)}
+/* TARJETAS de productos y animales */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:22px}
+.card{background:#fff;border:1px solid #efd9b0;border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.card .ph{aspect-ratio:1}
+.card .body{padding:14px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card .btn{margin-top:auto}
+.price{font-weight:700;color:var(--osc);font-size:1.1rem}
+.meta{font-size:.9rem;color:#7a5033}
+/* DOS COLUMNAS (adopciones, ayuda y nosotros) */
+.dos{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;margin-top:40px}
+/* FORMULARIO de adopción */
+form{display:grid;gap:12px;max-width:480px}
+label{font-weight:700;display:grid;gap:4px}
+input,select,textarea{font:inherit;padding:10px 12px;border:1.5px solid #c9a37a;border-radius:6px;background:#fff}
+/* CAJAS de información (donar, misión, visión) */
+.caja{background:var(--suave);padding:20px 22px;border-radius:6px;border-left:6px solid var(--terra)}
+.caja+.caja{margin-top:14px}
+/* PIE DE PÁGINA */
+footer{background:var(--cafe);color:#f3dfc0;padding:28px 0;font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--sol)}
+/* CELULAR: ajustes para pantallas angostas */
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .ph{max-width:340px;order:-1}}
