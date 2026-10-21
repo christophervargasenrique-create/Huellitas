@@ -4,7 +4,7 @@
 /* TEXTO Y FONDO GENERAL */
 body{font:400 1rem/1.6 Nunito,system-ui,sans-serif;color:var(--tinta);background:var(--hueso)}
 /* TÍTULOS */
-h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1;color:var(--osc)}
+h1,h2,h3{font-family:Fredoka,system-ui,sans-serif;line-height:1.1;color:var(--osc)}
 h1{font-size:clamp(2.2rem,6vw,3.9rem);font-weight:800}
 h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:.6rem}
 h3{font-size:1.2rem}
@@ -14,7 +14,7 @@ p{max-width:62ch}
 /* BARRA SUPERIOR con logo y menú */
 header{background:var(--terra);color:#fff;position:sticky;top:0;z-index:5}
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:10px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.3rem Fraunces,Georgia,serif;color:#fff}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.3rem Fredoka,system-ui,sans-serif;color:#fff}
 .logo img{height:40px}
 /* MENÚ de navegación */
 nav{display:flex;gap:4px;overflow-x:auto;max-width:100%}
@@ -83,3 +83,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer a{color:var(--sol)}
 /* CELULAR: ajustes para pantallas angostas */
 @media(max-width:760px){.hero{grid-template-columns:1fr}.hero .ph{max-width:340px;order:-1}}
+
+/* TIPOGRAFÍA FREDOKA: menú, botones y filtros usan la misma letra redondeada de los títulos */
+nav a,.btn,.chip{font-family:Fredoka,system-ui,sans-serif;font-weight:500}
+h1,h2,h3{font-weight:600}
+/* LOGO: recuadro claro para que se lea sobre la barra naranja */
+.logo img{height:48px;background:var(--hueso);border-radius:10px;padding:3px 10px}
